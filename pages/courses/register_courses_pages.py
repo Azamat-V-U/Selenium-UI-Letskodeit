@@ -70,7 +70,7 @@ class RegisterCoursesPage(BasePage):
         return self.click_enroll_submit_button()
 
     def verify_enroll_failed(self):
-        # time.sleep(3)
+        time.sleep(3)
         result = self.is_element_displayed(locator=self._enrol_error_message,
                                            locatorType="xpath")
         return result

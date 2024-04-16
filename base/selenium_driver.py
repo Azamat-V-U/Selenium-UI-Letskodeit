@@ -130,9 +130,9 @@ class SeleniumDriver():
         """
         try:
             by_type = self.get_by_type(locatorType)
-            self.log.info("Waiting for maximum :: " + str(15) +
+            self.log.info("Waiting for maximum :: " + str(25) +
                           " :: seconds for element to be visible")
-            wait = WebDriverWait(self.driver, timeout=20,
+            wait = WebDriverWait(self.driver, timeout=25,
                                  poll_frequency=1,
                                  ignored_exceptions=[NoSuchElementException,
                                                      ElementNotVisibleException,

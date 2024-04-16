@@ -34,19 +34,19 @@ class AssertStatus(SeleniumDriver):
                 else:
                     self.resultList.append("FAIL")
                     self.log.error(resultMessage + " Fail")
-                    self.take_screenshot(resultMessage)
+                    # self.take_screenshot(resultMessage)
                     self.resultList.clear()
             else:
                 self.resultList.append("FAIL")
                 self.log.error(resultMessage + " Result is not defined")
                 self.log.info(resultMessage)
-                self.take_screenshot(resultMessage)
+                # self.take_screenshot(resultMessage)
                 self.resultList.clear()
         except:
             self.resultList.append("FAIL")
             self.log.error(resultMessage + " Exception occurred")
             self.log.info(resultMessage)
-            self.take_screenshot(resultMessage)
+            # self.take_screenshot(resultMessage)
             self.resultList.clear()
             print_stack()
 

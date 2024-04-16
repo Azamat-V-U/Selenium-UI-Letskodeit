@@ -1,7 +1,16 @@
 name: Automated tests
 
 on:
-  push
+  workflow_dispatch:
+    inputs:
+      deployment_target:
+        description: Choose target
+        required: true
+        default:
+        type: choice
+        options:
+          - login_test
+          - practice_test
 
 jobs:
   test:
@@ -9,7 +18,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
       - name: setup Python
         uses: actions/setup-python@v4
         with:
@@ -18,7 +27,12 @@ jobs:
         run: sudo apt-get install google-chrome-stable
       - name: install dependencies
         run: pip install -r requirements.txt
-      - name: Run tests
-        run: pytest -s -v tests/home/login_tests.py --browser chrome
+      - name: login_test
+        if: "github.event.inputs.deployment_target == 'login_test'"
+        run: pytest -s -v tests/home/login_tests.py
+      - name: practice_test
+        if: "github.event.inputs.deployment_target == 'practice_test'"
+        run: pytest -s -v tests/practice/practice_tests.py
+
 
 

@@ -19,7 +19,6 @@ class RegisterCoursesCSVDataTests(unittest.TestCase):
     def setUP(self):
         self.nav.navigate_to_all_courses()
 
-    @pytest.mark.run()
     @data(*get_csv_data("C:\\Users\\User\\workspace_python\\My Project\\testdata.csv"))
     @unpack
     def test_invalidEnrollment(self, courseName, ccNum, ccExp, ccCVC):
