@@ -18,7 +18,7 @@ class LoginPage(BasePage):
     _email_field = "(//input[@type='email' and @placeholder='Email Address'])"
     _password_field = "(//input[@type='password'])"
     _login_button = "(//button[@id='login'])"
-    _logout_button = "(//a[@href='/logout' and contains(text(), 'Logout')])"
+    _logout_button = "(//a[@href='/login' and contains(text(), 'Login')])"
 
     def click_sign_in_button(self):
         self.element_click(self._signin_button, locatorType="xpath")
