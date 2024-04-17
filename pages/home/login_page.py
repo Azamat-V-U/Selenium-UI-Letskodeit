@@ -3,6 +3,7 @@ import utilities.custom_logger as cl
 from pages.home.navigation_page import NavigationPage
 import logging
 import time
+import allure
 
 class LoginPage(BasePage):
 
@@ -32,32 +33,37 @@ class LoginPage(BasePage):
         self.element_click(self._login_button, locatorType="xpath")
 
     def login(self, email="", password=""):
-        self.click_sign_in_button()
-        self.enter_email(email)
-        self.enter_password(password)
-        self.click_login_button()
+        with allure.step("Click on the 'sign in' button"):
+            self.click_sign_in_button()
+        with allure.step("Enter email"):
+            self.enter_email(email)
+        with allure.step("Enter password"):
+            self.enter_password(password)
+        with allure.step("Click on the 'log in' button"):
+            self.click_login_button()
         time.sleep(3)
 
     def verify_title(self):
-        return self.verify_page_title("Login")
+        with allure.step("Verify page title"):
+            return self.verify_page_title("Login")
 
+    def verify_login_successful(self):
+        with allure.step("Verify login successful"):
+            return self.is_element_present("(//button[@id='dropdownMenu1'])",
+                                           locatorType="xpath")
 
-    def verifyLoginSuccessful(self):
-        return self.is_element_present("(//button[@id='dropdownMenu1'])",
-                                       locatorType="xpath")
+    def verify_login_failed(self):
+        with allure.step("Verify login failed"):
+            return self.is_element_present("(//span[contains(text(), 'Incorrect login details. Please try again.')])",
+                                           locatorType="xpath")
 
-
-    def verifyLoginFailed(self):
-        return self.is_element_present("(//span[contains(text(), 'Incorrect login details. Please try again.')])",
-                                       locatorType="xpath")
-
-
-
-    def logOut(self):
-        self.nav.navigate_to_user_settings()
+    def log_out(self):
+        with allure.step("Hover over user settings"):
+            self.nav.navigate_to_user_settings()
         logout_link = self.wait_for_element(self._logout_button,
                                             locatorType="xpath", pollFrequency=1)
-        self.element_click(element=logout_link)
+        with allure.step("Click on the 'log out' button"):
+            self.element_click(element=logout_link)
 
 
 
