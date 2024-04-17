@@ -27,7 +27,7 @@ class LoginTests(unittest.TestCase):
     @allure.story("Login with invalid password")
     def test_invalidLogin(self):
         self.lp.log_out()
-        self.lp.login("test@email.com", "afgtue")
+        self.lp.login("test@email.com", "abcabc")
         result1 = self.lp.verify_title()
         self.ts.mark(result1, "Title verification")
         result2 = self.lp.verify_login_failed()

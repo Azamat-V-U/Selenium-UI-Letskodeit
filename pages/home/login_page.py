@@ -19,6 +19,8 @@ class LoginPage(BasePage):
     _password_field = "(//input[@type='password'])"
     _login_button = "(//button[@id='login'])"
     _logout_button = "(//a[@href='/logout' and contains(text(), 'Logout')])"
+    _invalid_login_message = "(//span[contains(text(), 'Incorrect login details. Please try again.')])"
+    _login_verification_icon = "(//button[@id='dropdownMenu1'])"
 
     def click_sign_in_button(self):
         self.element_click(self._signin_button, locatorType="xpath")
@@ -49,13 +51,12 @@ class LoginPage(BasePage):
 
     def verify_login_successful(self):
         with allure.step("Verify login successful"):
-            return self.is_element_present("(//button[@id='dropdownMenu1'])",
-                                           locatorType="xpath")
+            return self.is_element_present(self._login_verification_icon, locatorType="xpath")
 
     def verify_login_failed(self):
         with allure.step("Verify login failed"):
-            return self.is_element_present("(//span[contains(text(), 'correct login details. Please don't try again.')])",
-                                           locatorType="xpath")
+            return self.is_element_present(self._invalid_login_message, locatorType="xpath")
+
 
     def log_out(self):
         with allure.step("Hover over user settings"):
