@@ -50,12 +50,12 @@ class AssertStatus(SeleniumDriver):
             self.resultList.clear()
             print_stack()
 
-    # AssertStatus.mark.pass or fail(This method applies to the testcase)
-    # def mark(self, result, resultMessage):
-    #     """
-    #     Mark the result of the verification point in a test case
-    #     """
-    #     self.set_result(result, resultMessage)
+    # AssertStatus.mark.pass or fail(This method applies to the verification point of the testcase)
+    def mark(self, result, resultMessage):
+        """
+        Mark the result of the verification point in a test case
+        """
+        self.set_result(result, resultMessage)
 
     # AssertStatus.markFinal.pass or fail(This method applies to the end of the testcase)
     def mark_final(self, testName, result, resultMessage):
