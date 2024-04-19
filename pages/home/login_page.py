@@ -57,7 +57,6 @@ class LoginPage(BasePage):
         with allure.step("Verify login failed"):
             return self.is_element_present(self._invalid_login_message, locatorType="xpath")
 
-
     def log_out(self):
         with allure.step("Hover over user settings"):
             self.nav.navigate_to_user_settings()
