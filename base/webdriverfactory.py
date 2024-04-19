@@ -14,18 +14,18 @@ class WebDriverFactory():
             Returns:
             'WebDriver Instance'
         """
-        # options = Options()
-        # options.add_argument("--headless")
+        options = Options()
+        options.add_argument("--headless")
         base_url = "https://www.letskodeit.com/"
         if self.browser == "chrome":
-            driver = webdriver.Chrome()
-            # driver = webdriver.Chrome(options=options)
+            # driver = webdriver.Chrome()
+            driver = webdriver.Chrome(options=options)
         elif self.browser == "firefox":
-            driver = webdriver.Firefox()
-            # driver = webdriver.Firefox(options=options)
+            # driver = webdriver.Firefox()
+            driver = webdriver.Firefox(options=options)
         else:
-            driver = webdriver.Chrome()
-            # driver = webdriver.Chrome(options=options)
+            # driver = webdriver.Chrome()
+            driver = webdriver.Chrome(options=options)
         driver.implicitly_wait(3)
         driver.maximize_window()
         driver.get(base_url)
