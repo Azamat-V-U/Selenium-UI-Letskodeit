@@ -2,6 +2,7 @@ import utilities.custom_logger as cl
 import logging
 from base.basepage import BasePage
 import time
+import allure
 
 class RegisterCoursesPage(BasePage):
 
@@ -23,14 +24,17 @@ class RegisterCoursesPage(BasePage):
     _enrol_error_message = "(//span[normalize-space()='Your card number is incorrect.'])[1]"
 
     def click_all_courses_tab(self):
-        self.element_click(self._all_courses, locatorType="xpath")
+        with allure.step("Click on the 'All courses' tab"):
+            self.element_click(self._all_courses, locatorType="xpath")
 
     def enter_course_name(self, name):
-        self.send_keys(name, self._search_box)
-        return self.element_click(self._search_button, locatorType="xpath")
+        with allure.step("Enter course name and click on the 'magnifier' icon"):
+            self.send_keys(name, self._search_box)
+            return self.element_click(self._search_button, locatorType="xpath")
 
     def select_course_to_enroll(self, fullCourseName):
-        return self.element_click(locator=self._course.format(fullCourseName), locatorType="xpath")
+        with allure.step("Click on the found course"):
+            return self.element_click(locator=self._course.format(fullCourseName), locatorType="xpath")
 
     def click_enroll_to_course_button(self):
         self.element_click(self._enroll_button)
@@ -62,18 +66,23 @@ class RegisterCoursesPage(BasePage):
         return self.element_click(self._submit_enroll, locatorType="xpath")
 
     def enroll_course(self, num="", exp="", cvc=""):
-        self.web_scroll(direction="little down")
-        self.click_enroll_to_course_button()
-        self.web_scroll(direction="down")
-        self.enter_credit_card_information(num, exp, cvc)
+        with allure.step("Scroll down"):
+            self.web_scroll(direction="little down")
+        with allure.step("Click on the 'Enroll in Course' button"):
+            self.click_enroll_to_course_button()
+        with allure.step("Scroll down"):
+            self.web_scroll(direction="down")
+        with allure.step("Enter the required card information"):
+            self.enter_credit_card_information(num, exp, cvc)
         time.sleep(3)
         return self.click_enroll_submit_button()
 
     def verify_enroll_failed(self):
         time.sleep(3)
-        result = self.is_element_displayed(locator=self._enrol_error_message,
-                                           locatorType="xpath")
-        return result
+        with allure.step("Check the message about the wrong card number"):
+            result = self.is_element_displayed(locator=self._enrol_error_message,
+                                               locatorType="xpath")
+            return result
 
 
 

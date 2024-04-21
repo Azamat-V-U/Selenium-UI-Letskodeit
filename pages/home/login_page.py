@@ -46,23 +46,23 @@ class LoginPage(BasePage):
         time.sleep(3)
 
     def verify_title(self):
-        with allure.step("Verify page title"):
+        with allure.step("Verify the page title"):
             return self.verify_page_title("Login")
 
     def verify_login_successful(self):
-        with allure.step("Verify login successful"):
+        with allure.step("Verify that the login is successful"):
             return self.is_element_present(self._login_verification_icon, locatorType="xpath")
 
     def verify_login_failed(self):
-        with allure.step("Verify login failed"):
+        with allure.step("Verify that the login is failed"):
             return self.is_element_present(self._invalid_login_message, locatorType="xpath")
 
     def log_out(self):
-        with allure.step("Hover over user settings"):
+        with allure.step("Click on the 'User settings' icon at the top of the window"):
             self.nav.navigate_to_user_settings()
         logout_link = self.wait_for_element(self._logout_button,
                                             locatorType="xpath", pollFrequency=1)
-        with allure.step("Click on the 'log out' button"):
+        with allure.step("Click on the 'log out' item"):
             self.element_click(element=logout_link)
 
 

@@ -5,6 +5,7 @@ import pytest
 from ddt import ddt, data, unpack
 from utilities.read_data import get_csv_data
 from pages.home.navigation_page import NavigationPage
+import allure
 
 @pytest.mark.usefixtures("one_time_set_up", "set_up")
 @ddt
@@ -21,6 +22,8 @@ class RegisterCoursesCSVDataTests(unittest.TestCase):
 
     @data(*get_csv_data("testdata.csv"))
     @unpack
+    @allure.feature()
+    @allure.story()
     def test_invalidEnrollment(self, courseName, ccNum, ccExp, ccCVC):
         self.courses.click_all_courses_tab()
         result1 = self.courses.enter_course_name(courseName)

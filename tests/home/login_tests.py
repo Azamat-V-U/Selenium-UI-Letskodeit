@@ -15,7 +15,7 @@ class LoginTests(unittest.TestCase):
         self.nav = NavigationPage(self.driver)
 
     @pytest.mark.run(order=2)
-    @allure.feature("Login verification")
+    @allure.feature("Login")
     @allure.story("Login with valid credentials")
     def test_validLogin(self):
         self.lp.login("test@email.com", "abcabc")
@@ -23,7 +23,7 @@ class LoginTests(unittest.TestCase):
         self.ts.mark_final("test_validLogin", result, "ValidLogin verification")
 
     @pytest.mark.run(order=1)
-    @allure.feature("Login verification")
+    @allure.feature("Login")
     @allure.story("Login with invalid password")
     def test_invalidLogin(self):
         self.lp.log_out()
