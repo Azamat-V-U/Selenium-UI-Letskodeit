@@ -4,6 +4,7 @@ from base.basepage import BasePage
 import time
 import allure
 
+
 class RegisterCoursesPage(BasePage):
 
     log = cl.custom_logger(logging.DEBUG)

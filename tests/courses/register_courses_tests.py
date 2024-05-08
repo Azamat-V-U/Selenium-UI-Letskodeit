@@ -6,7 +6,6 @@ from ddt import ddt, data, unpack
 from utilities.read_data import get_csv_data
 from pages.home.navigation_page import NavigationPage
 import allure
-
 @pytest.mark.usefixtures("one_time_set_up", "set_up")
 @ddt
 class RegisterCoursesCSVDataTests(unittest.TestCase):
