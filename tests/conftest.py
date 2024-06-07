@@ -6,6 +6,7 @@ All fixtures are usually stored in this file
 import pytest
 from base.webdriverfactory import WebDriverFactory
 from pages.home.login_page import LoginPage
+from pages.home.navigation_page import NavigationPage
 
 
 @pytest.fixture()
@@ -25,7 +26,6 @@ def one_time_set_up(request, browser):
     lp = LoginPage(driver)
     lp.login("test@email.com", "abcabc")
 
-
     if request.cls is not None:
         request.cls.driver = driver
 
@@ -34,18 +34,19 @@ def one_time_set_up(request, browser):
     print("Post conditions(Class or module)")
 
 
-
-def pytest_addoption(parser):
+def pytest_adoption(parser):
     parser.addoption("--browser")
     parser.addoption("--osType", help="Type of operating system")
+
 
 # This methods get options to execute code with different provided browsers and osType etg. --browser, --osType
 @pytest.fixture(scope="session")
 def browser(request):
     return request.config.getoption("--browser")
 
+
 @pytest.fixture(scope="session")
-def osType(request):
+def os_type(request):
     return request.config.getoption("--osType")
 
 

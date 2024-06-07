@@ -1,11 +1,13 @@
 import csv
-def get_csv_data(fileName):
+
+
+def get_csv_data(file_name):
     # create an empty list to store rows
     rows = []
     # open the CSV file
-    dataFile = open(fileName, "r")
+    data_file = open(file_name, "r")
     # create a CSV Reader from CSV file
-    reader = csv.reader(dataFile)
+    reader = csv.reader(data_file)
     # skip the headers
     next(reader)
     # add rows from reader to list

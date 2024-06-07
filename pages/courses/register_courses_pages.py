@@ -15,18 +15,19 @@ class RegisterCoursesPage(BasePage):
 
     _search_box = "(//input[@id='search' and @placeholder='Search Course'])"
     _search_button = "(//button[@class='find-course search-course'])"
-    _all_courses = "(//a[@class='dynamic-link' and text()='ALL COURSES'])"
+    # _all_courses = "(//a[@class='dynamic-link' and text()='ALL COURSES'])"
     _course = "(//div[@id='course-list']//h4[@class='dynamic-heading' and contains (text(),'{0}')])"
-    _enroll_button = "(//button[@class='dynamic-button btn btn-default btn-lg btn-enroll' and text()='Enroll in Course'])"
+    _enroll_button = "(//button[@class='dynamic-button btn btn-default btn-lg btn-enroll' " \
+                     "and text()='Enroll in Course'])"
     _cc_num = "(//input[@aria-label='Credit or debit card number'])"
     _cc_exp = "(//input[@name='exp-date'])"
     _cc_cvc = "(//input[@name='cvc'])"
     _submit_enroll = "(//button[@class='zen-subscribe sp-buy btn btn-default btn-lg btn-block btn-gtw btn-submit checkout-button dynamic-button'])"
     _enrol_error_message = "(//span[normalize-space()='Your card number is incorrect.'])[1]"
 
-    def click_all_courses_tab(self):
-        with allure.step("Click on the 'All courses' tab"):
-            self.element_click(self._all_courses, locatorType="xpath")
+    # def click_all_courses_tab(self):
+    #     with allure.step("Click on the 'All courses' tab"):
+    #         self.element_click(self._all_courses, locatorType="xpath")
 
     def enter_course_name(self, name):
         with allure.step("Enter course name and click on the 'magnifier' icon"):
@@ -41,19 +42,16 @@ class RegisterCoursesPage(BasePage):
         self.element_click(self._enroll_button)
 
     def enter_card_num(self, num):
-        # time.sleep(3)
         self.switch_to_frame_by_index(self._cc_num, locatorType="xpath")
         self.send_keys_when_ready(num, locator=self._cc_num, locatorType="xpath")
         self.switch_to_default_content()
 
     def enter_card_exp(self, exp):
-        # time.sleep(3)
         self.switch_to_frame_by_index(self._cc_exp, locatorType="xpath")
         self.send_keys_when_ready(exp, locator=self._cc_exp, locatorType="xpath")
         self.switch_to_default_content()
 
     def enter_card_cvc(self, cvc):
-        # time.sleep(3)
         self.switch_to_frame_by_index(self._cc_cvc, locatorType="xpath")
         self.send_keys_when_ready(cvc, locator=self._cc_cvc, locatorType="xpath")
         self.switch_to_default_content()
@@ -84,6 +82,3 @@ class RegisterCoursesPage(BasePage):
             result = self.is_element_displayed(locator=self._enrol_error_message,
                                                locatorType="xpath")
             return result
-
-
-

@@ -20,9 +20,6 @@ class PracticePage(BasePage):
     _element_practice_button = "(//a[normalize-space()='Element Practice'])"
     _radio_buttons_list = "(//input[contains(@type, 'radio') and contains(@name, 'cars')])"
     _check_boxes_list = "(//input[contains(@type, 'checkbox') and contains(@name, 'cars')])"
-    # _check_box_bmw = "bmwcheck"
-    # _check_box_benz = "benzcheck"
-    # _check_box_honda = "hondacheck"
     _switch_new_window_button = "openwindow"
     _drop_down_list = "carselect"
     _multiple_select_list = "multiple-select-example"
@@ -101,8 +98,6 @@ class PracticePage(BasePage):
         with allure.step("Check that the page title is 'Practice page'"):
             return self.verify_page_title("Practice page")
 
-    # def is_selected(self):
-    #     return self.is_element_selected(self._check_box_honda, locatorType="id")
 
     def is_displayed(self):
         with allure.step("Click on the 'Hide' button in the 'Element Displayed Example' section"):

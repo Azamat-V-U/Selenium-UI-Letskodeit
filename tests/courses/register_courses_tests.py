@@ -6,17 +6,21 @@ from ddt import ddt, data, unpack
 from utilities.read_data import get_csv_data
 from pages.home.navigation_page import NavigationPage
 import allure
+
+
 @pytest.mark.usefixtures("one_time_set_up", "set_up")
 @ddt
 class RegisterCoursesCSVDataTests(unittest.TestCase):
 
     @pytest.fixture(autouse=True)
     def objectSetup(self, one_time_set_up):
+        self.driver = one_time_set_up
         self.courses = RegisterCoursesPage(self.driver)
         self.ts = AssertStatus(self.driver)
         self.nav = NavigationPage(self.driver)
 
-    def setUP(self):
+    @pytest.fixture(autouse=True)
+    def set_up_method(self):
         self.nav.navigate_to_all_courses()
 
     @data(*get_csv_data("testdata.csv"))
@@ -24,7 +28,7 @@ class RegisterCoursesCSVDataTests(unittest.TestCase):
     @allure.feature()
     @allure.story()
     def test_invalidEnrollment(self, courseName, ccNum, ccExp, ccCVC):
-        self.courses.click_all_courses_tab()
+        # self.courses.click_all_courses_tab()
         result1 = self.courses.enter_course_name(courseName)
         self.ts.mark(result1, "enter_course_name verification")
         result2 = self.courses.select_course_to_enroll(courseName)

@@ -5,9 +5,10 @@ import logging
 import time
 import allure
 
+
 class LoginPage(BasePage):
 
-    log = cl.custom_logger((logging.DEBUG))
+    log = cl.custom_logger(logging.DEBUG)
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -43,14 +44,14 @@ class LoginPage(BasePage):
             self.enter_password(password)
         with allure.step("Click on the 'log in' button"):
             self.click_login_button()
-        time.sleep(3)
+            time.sleep(3)
 
     def verify_title(self):
         with allure.step("Verify the page title"):
             return self.verify_page_title("Login")
 
     def verify_login_successful(self):
-        with allure.step("Verify that the login is successful"):
+        with allure.step("Verify that login is successful"):
             return self.is_element_present(self._login_verification_icon, locatorType="xpath")
 
     def verify_login_failed(self):
@@ -60,8 +61,9 @@ class LoginPage(BasePage):
     def log_out(self):
         with allure.step("Click on the 'User settings' icon at the top of the window"):
             self.nav.navigate_to_user_settings()
-        logout_link = self.wait_for_element(self._logout_button,
-                                            locatorType="xpath", pollFrequency=1)
+            logout_link = self.wait_for_element(self._logout_button,
+                                                locatorType="xpath", pollFrequency=1)
+            self.log.info("Log out button is ready")
         with allure.step("Click on the 'log out' item"):
             self.element_click(element=logout_link)
 

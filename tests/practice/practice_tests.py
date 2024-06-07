@@ -5,11 +5,13 @@ import unittest
 import pytest
 import allure
 
+
 @pytest.mark.usefixtures("one_time_set_up", "set_up")
 class PracticeTests(unittest.TestCase):
 
     @pytest.fixture(autouse=True)
     def classSetUP(self, one_time_set_up):
+        self.driver = one_time_set_up
         self.pc = PracticePage(self.driver)
         self.ts = AssertStatus(self.driver)
         self.nav = NavigationPage(self.driver)
@@ -76,7 +78,7 @@ class PracticeTests(unittest.TestCase):
     @allure.story("Switching to the confirmation window")
     def test_switchToConfirm(self):
         result = self.pc.check_switch_to_confirm()
-        self.ts.mark_final("test_switchToComfirm", result, "switchToComfirm verification")
+        self.ts.mark_final("test_switchToConfirm", result, "switchToConfirm verification")
 
     @pytest.mark.run(order=9)
     @allure.feature("Mouse hover element")

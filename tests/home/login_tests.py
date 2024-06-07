@@ -5,11 +5,13 @@ import unittest
 import pytest
 import allure
 
+
 @pytest.mark.usefixtures("one_time_set_up", "set_up")
 class LoginTests(unittest.TestCase):
 
     @pytest.fixture(autouse=True)
     def classSetUP(self, one_time_set_up):
+        self.driver = one_time_set_up
         self.lp = LoginPage(self.driver)
         self.ts = AssertStatus(self.driver)
         self.nav = NavigationPage(self.driver)

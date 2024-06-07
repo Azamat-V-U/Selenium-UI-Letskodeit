@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.firefox.options import Options
 
+
 class WebDriverFactory():
 
     def __init__(self, browser):
@@ -30,5 +31,3 @@ class WebDriverFactory():
         driver.maximize_window()
         driver.get(base_url)
         return driver
-
-
