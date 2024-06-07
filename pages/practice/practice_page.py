@@ -98,7 +98,6 @@ class PracticePage(BasePage):
         with allure.step("Check that the page title is 'Practice page'"):
             return self.verify_page_title("Practice page")
 
-
     def is_displayed(self):
         with allure.step("Click on the 'Hide' button in the 'Element Displayed Example' section"):
             self.element_click(self._hide_element_button, locatorType="id")

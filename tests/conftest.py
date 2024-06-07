@@ -6,11 +6,9 @@ All fixtures are usually stored in this file
 import pytest
 from base.webdriverfactory import WebDriverFactory
 from pages.home.login_page import LoginPage
-from pages.home.navigation_page import NavigationPage
 
 
 @pytest.fixture()
-# Fixture without attributes applies to method
 def set_up():
     print("Preconditions of the  method(test)")
     yield
@@ -18,7 +16,6 @@ def set_up():
 
 
 @pytest.fixture(scope="class")
-# Fixture with attributes applies to the attributes like scope="class" or "module"
 def one_time_set_up(request, browser):
     print("Preconditions(Class or Module)")
     wdf = WebDriverFactory(browser)
@@ -34,12 +31,11 @@ def one_time_set_up(request, browser):
     print("Post conditions(Class or module)")
 
 
-def pytest_adoption(parser):
+def pytest_addoption(parser):
     parser.addoption("--browser")
     parser.addoption("--osType", help="Type of operating system")
 
 
-# This methods get options to execute code with different provided browsers and osType etg. --browser, --osType
 @pytest.fixture(scope="session")
 def browser(request):
     return request.config.getoption("--browser")
