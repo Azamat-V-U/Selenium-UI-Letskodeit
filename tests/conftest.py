@@ -10,7 +10,7 @@ from pages.home.login_page import LoginPage
 
 @pytest.fixture()
 def set_up():
-    print("Preconditions of the  method(test)")
+    print("Preconditions of the method(test)")
     yield
     print("Post conditions of the method(test)")
 
@@ -31,9 +31,9 @@ def one_time_set_up(request, browser):
     print("Post conditions(Class or module)")
 
 
-def pytest_addoption(parser):
-    parser.addoption("--browser")
-    parser.addoption("--osType", help="Type of operating system")
+# def pytest_addoption(parser):
+#     parser.addoption("--browser")
+#     parser.addoption("--osType", help="Type of operating system")
 
 
 @pytest.fixture(scope="session")
