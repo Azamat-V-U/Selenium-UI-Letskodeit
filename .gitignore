@@ -4,4 +4,4 @@
 *.log
 allure-results
 .env
-*.csv
+testdata.csv
