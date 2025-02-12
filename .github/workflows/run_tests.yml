@@ -26,12 +26,8 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: "3.12.1"
-      - name: Install Chrome
-        run: sudo apt-get install google-chrome-stable
       - name: install dependencies
         run: pip install -r requirements.txt
-      - name: Download all workflow run artifacts
-        uses: actions/download-artifact@v3
       - name: login_test
         if: "github.event.inputs.deployment_target == 'login_test'"
         run: pytest -s -v tests/home/login_tests.py --alluredir=allure-results
