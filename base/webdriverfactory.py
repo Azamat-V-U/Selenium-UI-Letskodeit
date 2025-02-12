@@ -19,17 +19,17 @@ class WebDriverFactory:
         options.add_argument("--headless")
         base_url = "https://www.letskodeit.com/"
         # driver = webdriver.Chrome()
-        driver = webdriver.Chrome(options=options)
-        # if self.browser == "chrome":
-        #     # driver = webdriver.Chrome()
-        #     driver = webdriver.Chrome(options=options)
-        # elif self.browser == "firefox":
-        #     # driver = webdriver.Firefox()
-        #     driver = webdriver.Firefox(options=options)
-        # else:
-        #     # driver = webdriver.Chrome()
-        #     driver = webdriver.Chrome(options=options)
+        if self.browser == "chrome":
+            # driver = webdriver.Chrome()
+            driver = webdriver.Chrome(options=options)
+        elif self.browser == "firefox":
+            # driver = webdriver.Firefox()
+            driver = webdriver.Firefox(options=options)
+        else:
+            # driver = webdriver.Chrome()
+            driver = webdriver.Chrome(options=options)
         driver.implicitly_wait(3)
         driver.maximize_window()
         driver.get(base_url)
         return driver
+    

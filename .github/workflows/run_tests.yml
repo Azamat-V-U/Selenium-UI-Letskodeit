@@ -13,6 +13,7 @@ on:
           - practice_test
           - course_invalid_enrollment_test
           - test_suite_regress
+          - all tests
 
 jobs:
   run-tests:
@@ -26,19 +27,22 @@ jobs:
           python-version: "3.12.1"
       - name: install dependencies
         run: pip install -r requirements.txt
+      - name: all tests
+        if: "github.event.inputs.deployment_target == 'all tests'"
+        run: pytest -s -v tests
       - name: login_test
         if: "github.event.inputs.deployment_target == 'login_test'"
-        run: pytest -s -v tests/home/login_tests.py --alluredir=allure-results
+        run: pytest -s -v tests/home/login_tests.py
 #        continue-on-error: true
       - name: practice_test
         if: "github.event.inputs.deployment_target == 'practice_test'"
-        run: pytest -s -v tests/practice/practice_tests.py --alluredir=allure-results
+        run: pytest -s -v tests/practice/practice_tests.py
 #        continue-on-error: true
       - name: course_invalid_enrollment_test
         if: "github.event.inputs.deployment_target == 'course_invalid_enrollment_test'"
-        run: pytest -s -v tests/courses/register_courses_tests.py --alluredir=allure-results
+        run: pytest -s -v tests/courses/register_courses_tests.py
 #        continue-on-error: true
       - name: test_suite_regress
         if: "github.event.inputs.deployment_target == 'test_suite_regress'"
-        run: pytest -s -v tests/test_suite_regress.py --alluredir=allure-results
+        run: pytest -s -v tests/test_suite_regress.py
 #        continue-on-error: true
