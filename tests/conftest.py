@@ -16,9 +16,9 @@ def set_up():
 
 
 @pytest.fixture(scope="class")
-def one_time_set_up(request, browser):
+def one_time_set_up(request):
     print("Preconditions(Class or Module)")
-    wdf = WebDriverFactory(browser)
+    wdf = WebDriverFactory()
     driver = wdf.get_web_driver_instance()
     lp = LoginPage(driver)
     lp.login("test@email.com", "abcabc")
@@ -29,21 +29,3 @@ def one_time_set_up(request, browser):
     yield driver
     driver.quit()
     print("Post conditions(Class or module)")
-
-
-# def pytest_addoption(parser):
-#     parser.addoption("--browser")
-#     parser.addoption("--osType", help="Type of operating system")
-
-
-@pytest.fixture(scope="session")
-def browser(request):
-    return request.config.getoption("--browser")
-
-
-@pytest.fixture(scope="session")
-def os_type(request):
-    return request.config.getoption("--osType")
-
-
-
