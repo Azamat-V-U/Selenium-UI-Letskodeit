@@ -1,11 +1,11 @@
-from pages.courses.register_courses_pages import RegisterCoursesPage
-from utilities.assertstatus import AssertStatus
 import unittest
 import pytest
+import allure
 from ddt import ddt, data, unpack
 from utilities.read_data import get_csv_data
 from pages.home.navigation_page import NavigationPage
-import allure
+from pages.courses.register_courses_pages import RegisterCoursesPage
+from utilities.assertstatus import AssertStatus
 
 
 @pytest.mark.usefixtures("one_time_set_up", "set_up")
