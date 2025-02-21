@@ -30,7 +30,7 @@ def get_csv_data(file_name):
     csv_file_path = os.getenv(file_name)
 
     if not csv_file_path:
-        raise FileNotFoundError("CSV file path not found in .env file")
+        raise FileNotFoundError(f"CSV file path not found in {file_name} file")
 
     data = []
     try:
