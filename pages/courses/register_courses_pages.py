@@ -19,6 +19,8 @@ class RegisterCoursesPage(BasePage):
     _course = "(//div[@id='course-list']//h4[@class='dynamic-heading' and contains (text(),'{0}')])"
     _enroll_button = "(//button[@class='dynamic-button btn btn-default btn-lg btn-enroll' " \
                      "and text()='Enroll in Course'])"
+    # The xpath for 'Enroll' button has changed
+    # _enroll_button = "(//div[@data-hidden='mobile'][2]//a[text()=' Enroll Now'])"
     _cc_num = "(//input[@aria-label='Credit or debit card number'])"
     _cc_exp = "(//input[@name='exp-date'])"
     _cc_cvc = "(//input[@name='cvc'])"

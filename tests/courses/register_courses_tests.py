@@ -23,7 +23,8 @@ class RegisterCoursesCSVDataTests(unittest.TestCase):
     def set_up_method(self):
         self.nav.navigate_to_all_courses()
 
-    @data(*get_csv_data("testdata.csv"))
+    # @data(*get_csv_data("testdata.csv"))
+    @data(*get_csv_data())
     @unpack
     @allure.feature()
     @allure.story()
