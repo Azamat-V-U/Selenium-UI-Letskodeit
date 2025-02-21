@@ -26,7 +26,8 @@ jobs:
         with:
           python-version: "3.12.1"
       - name: Create CSV File from Secret
-        run: echo -e "${{secrets.TESTDATA_CSV}}" > testdata.csv
+        run: |
+          echo -e "${{secrets.TESTDATA_CSV}}" | tr '\r' '\n' > testdata.csv
       - name: install dependencies
         run: |
           pip install -r requirements.txt
