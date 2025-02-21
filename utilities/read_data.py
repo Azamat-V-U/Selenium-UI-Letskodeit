@@ -25,8 +25,9 @@ load_dotenv()
 #     return rows
 
 
-def get_csv_data():
-    csv_file_path = os.getenv("CSV_FILE_PATH")
+def get_csv_data(file_name):
+    # csv_file_path = os.getenv("CSV_FILE_PATH")
+    csv_file_path = os.getenv(file_name)
 
     if not csv_file_path:
         raise FileNotFoundError("CSV file path not found in .env file")
