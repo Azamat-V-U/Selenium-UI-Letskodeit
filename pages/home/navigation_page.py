@@ -29,4 +29,3 @@ class NavigationPage(BasePage):
                                              locatorType="xpath", pollFrequency=1)
         self.log.info("Navigated to the practice tab")
         self.element_click(element=practice_tab)
-

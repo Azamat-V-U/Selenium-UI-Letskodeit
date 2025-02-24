@@ -29,8 +29,3 @@ class BasePage(SeleniumDriver):
             print("Failed to get page title")
             print_stack()
             return False
-
-
-
-
-

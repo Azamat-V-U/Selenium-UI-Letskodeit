@@ -8,13 +8,11 @@ Example:
     name = self.util.getUniqueName()
 """
 
-import time
-import traceback
 import utilities.custom_logger as sl
-import random, string
 import logging
 
-class Util():
+
+class Util:
 
     log = sl.custom_logger(logging.INFO)
 

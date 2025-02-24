@@ -143,4 +143,3 @@ class PracticePage(BasePage):
             logout_link = self.wait_for_element(self._logout_button,
                                                 locatorType="xpath", pollFrequency=1)
             return self.element_click(element=logout_link)
-

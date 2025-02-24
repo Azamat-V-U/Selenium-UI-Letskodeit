@@ -34,5 +34,3 @@ class LoginTests(unittest.TestCase):
         self.ts.mark(result1, "Title verification")
         result2 = self.lp.verify_login_failed()
         self.ts.mark_final("test_invalidLogin", result2, "InvalidLogin verification")
-
-

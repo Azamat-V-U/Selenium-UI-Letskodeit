@@ -20,7 +20,7 @@ class LoginPage(BasePage):
     _password_field = "(//input[@type='password'])"
     _login_button = "(//button[@id='login'])"
     _logout_button = "(//a[@href='/logout' and contains(text(), 'Logout')])"
-    _invalid_login_message = "(//span[contains(text(), 'Incorrect login details. Please try again.')])"
+    _invalid_login_message = "(//span[contains(text(), 'Incorrect login details')])"
     _login_verification_icon = "(//button[@id='dropdownMenu1'])"
 
     def click_sign_in_button(self):
@@ -66,8 +66,3 @@ class LoginPage(BasePage):
             self.log.info("Log out button is ready")
         with allure.step("Click on the 'log out' item"):
             self.element_click(element=logout_link)
-
-
-
-
-
