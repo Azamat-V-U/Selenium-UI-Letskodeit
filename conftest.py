@@ -1,8 +1,3 @@
-"""
-Conftest is a configuration file for tests it applies to all tests you want to apply
-All fixtures are usually stored in this file
-"""
-
 import pytest
 from base.webdriverfactory import WebDriverFactory
 from pages.home.login_page import LoginPage
